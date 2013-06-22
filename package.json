@@ -1,0 +1,19 @@
+{
+    "name": "montage-data",
+    "version": "0.1.1-alpha",
+    "publishConfig": {
+      "tag": "edge"
+    },
+    "dependencies": {
+        "montage": "0.13.1"
+    },
+    "devDependencies": {
+        "montage-testing": "0.2.0-alpha"
+    },
+    "exclude": [
+        "overview.html",
+        "overview",
+        "run-tests.html",
+        "test"
+    ]
+}
