@@ -1,0 +1,8 @@
+{
+    "name": "montage-data-tests",
+    "version": "0.2.0-alpha.1",
+    "mappings": {
+        "montage": "../node_modules/montage",
+        "montage-testing": "../node_modules/montage-testing"
+    }
+}

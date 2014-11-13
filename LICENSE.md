@@ -1,4 +1,9 @@
 ============================================================================
+Copyright (c) 2014, Charles d'Harcourt
+All Rights Reserved. Licensed under the BSD 3-Clause License.
+http://opensource.org/licenses/BSD-3-Clause
+
+============================================================================
 Copyright (c) 2013, Pierre Frisch
 All rights reserved.
 
