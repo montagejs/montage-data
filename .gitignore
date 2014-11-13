@@ -1,0 +1,3 @@
+# Please keep in alphabetical order, with /* paths before * ones.
+/node_modules
+.DS_Store
