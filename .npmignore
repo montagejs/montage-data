@@ -1,0 +1,8 @@
+._*
+.DS_Store
+.DS_Store?
+.idea
+.Spotlight-V100
+.Trashes
+*.xcodeproj
+node_modules
