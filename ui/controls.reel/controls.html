@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>
+        Controls
+    </title>
+    <link rel="stylesheet" href="controls.css">
+    <script type="text/montage-serialization">
+    {
+        "go": {
+            "prototype": "digit/ui/button.reel",
+            "properties": {
+                "element": {"#": "go"},
+                "label": "Go!"
+            }
+        },
+        "language": {
+            "prototype": "digit/ui/select.reel",
+            "properties": {
+                "element": {"#": "language"},
+                "content": [
+                    {"label": "English", "code": "EN"},
+                    {"label": "French", "code": "FR"},
+                    {"label": "Spanish", "code": "ES"}
+                ]
+            }
+        },
+        "owner": {
+            "properties": {
+                "element": {"#": "controls"}
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <div data-montage-id="controls" data-montage-skin="light" class="Controls">
+        <div class="contents">
+            <select data-montage-id="language" class="language"></select>
+            <button data-montage-id="go" class="go"></button>
+        </div>
+    </div>
+</body>
+</html>

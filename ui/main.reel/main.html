@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="main.css">
     <script type="text/montage-serialization">
     {
+        "controls": {
+            "prototype": "ui/controls.reel",
+            "properties": {"element": {"#": "controls"}}
+        },
+        "display": {
+            "prototype": "ui/display.reel",
+            "properties": {"element": {"#": "display"}}
+        },
         "owner": {
             "properties": {
                 "element": {"#": "main"}
@@ -18,6 +26,8 @@
 </head>
 <body>
     <div data-montage-id="main" data-montage-skin="light" class="Main">
+        <div data-montage-id="display" class="display"></div>
+        <div data-montage-id="controls" class="controls"></div>
     </div>
 </body>
 </html>
