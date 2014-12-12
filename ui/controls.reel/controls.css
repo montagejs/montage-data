@@ -1,7 +1,3 @@
-.Controls {
-    background: green;
-}
-
 .Controls .contents {
     left: 50%;
     position: relative;
@@ -10,7 +6,7 @@
     width: 80%;
 }
 
-.Controls .contents .go, .Controls .contents .language {
+.Controls .contents .language, .Controls .contents .update {
     display: block;
     width: 100%;
     margin: 8px 0;

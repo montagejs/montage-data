@@ -18,10 +18,9 @@ exports.Main = Component.specialize(/** @lends Main# */ {
         }
     },
 
-    handleGo: {
-        value: function () {
-            var selector = this.templateObjects.controls.selector;
-            var stream = this.service.query(selector);
+    handleControlsUpdate: {
+        value: function (event) {
+            var stream = this.service.query(event.detail.selector);
             this.templateObjects.display.display(stream);
         }
     }

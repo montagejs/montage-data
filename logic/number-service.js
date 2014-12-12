@@ -12,30 +12,63 @@ exports.NumberService = ObjectService.specialize(/** @lends NumberService.protot
     constructor: {
         value: function NumberService() {
             this.super();
-            this.stream = null;
+        }
+    },
+
+    numbers: {
+        value: {
+            EN: ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"],
+            ES: ["cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"],
+            FR: ["zero", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix"]
         }
     },
 
     query: {
         value: function (selector) {
-            // TODO: Fulfill the current stream promise.
-            this.stream = new NumberStream();
-            window.setTimeout(next, 1000);
+            this.stream = new NumberStream(selector);
+            if (this.number) {
+                window.setTimeout(this.feed.bind(this, this.stream), 250);
+            }
+            return this.stream;
         }
     },
 
-    next: {
-        value: function () {
-            this.stream.number += 1;
-            this.stream.add(this.string(this.stream.number));
-            window.setTimeout(next, 1000);
+    stream: {
+        get: function() {
+            return this._stream;
+        },
+
+        set: function(stream) {
+            if (this._stream && !this._stream.settled) {
+                this._stream.resolve();  // TODO: Pass in an appropriate value.
+            }
+            this._stream = stream;
         }
     },
 
-    string: {
-        value: function (number) {
-            // TODO: Return the number in the appropriate language.
+    number: {
+        get: function() {
+            var language = this.stream && this.stream.selector.language;
+            var numbers = language && this.numbers[language];
+            var index = numbers && this.stream.index;
+            var number = numbers && index < numbers.length && numbers[index];
+            if (!number && numbers && index < numbers.length) {
+                this.stream.reject();  // TODO: Pass in an appropriate error.
+            } else if (!number) {
+                this.stream.resolve();  // TODO: Pass in an appropriate value.
+            }
             return number;
+        }
+    },
+
+    feed: {
+        value: function (stream) {
+            var number = (stream == this.stream) && this.number;
+            if (number) {
+                this.stream.add(number);
+                this.stream.index += 1;
+                window.setTimeout(this.feed.bind(this, this.stream), 250);
+            }
         }
     }
 });

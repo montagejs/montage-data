@@ -8,13 +8,6 @@
     <link rel="stylesheet" href="controls.css">
     <script type="text/montage-serialization">
     {
-        "go": {
-            "prototype": "digit/ui/button.reel",
-            "properties": {
-                "element": {"#": "go"},
-                "label": "Go!"
-            }
-        },
         "language": {
             "prototype": "digit/ui/select.reel",
             "properties": {
@@ -30,6 +23,17 @@
             "properties": {
                 "element": {"#": "controls"}
             }
+        },
+        "update": {
+            "prototype": "digit/ui/button.reel",
+            "properties": {
+                "element": {"#": "update"},
+                "identifier": "update",
+                "label": "Update"
+            },
+            "listeners": [
+                {"type": "action", "listener": {"@": "owner"}}
+            ]
         }
     }
     </script>
@@ -38,7 +42,7 @@
     <div data-montage-id="controls" data-montage-skin="light" class="Controls">
         <div class="contents">
             <select data-montage-id="language" class="language"></select>
-            <button data-montage-id="go" class="go"></button>
+            <button data-montage-id="update" class="update"></button>
         </div>
     </div>
 </body>

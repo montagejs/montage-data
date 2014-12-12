@@ -9,9 +9,9 @@ var ObjectStream = require("logic/object-stream").ObjectStream;
  */
 exports.NumberStream = ObjectStream.specialize(/** @lends NumberStream.prototype */ {
     constructor: {
-        value: function NumberStream() {
-            this.super();
-            this.number = 0;
+        value: function NumberStream(selector) {
+            this.super(selector);
+            this.index = 0;
         }
     }
 });

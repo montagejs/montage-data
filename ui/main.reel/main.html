@@ -10,7 +10,13 @@
     {
         "controls": {
             "prototype": "ui/controls.reel",
-            "properties": {"element": {"#": "controls"}}
+            "properties": {
+                "element": {"#": "controls"},
+                "identifier": "controls"
+            },
+            "listeners": [
+                {"type": "update", "listener": {"@": "owner"}}
+            ]
         },
         "display": {
             "prototype": "ui/display.reel",

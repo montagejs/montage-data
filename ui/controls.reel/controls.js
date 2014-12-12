@@ -3,6 +3,7 @@
  * @requires montage/ui/component
  */
 var Component = require("montage/ui/component").Component;
+var NumberSelector = require("logic/number-selector").NumberSelector;
 
 /**
  * @class Controls
@@ -16,11 +17,14 @@ exports.Controls = Component.specialize(/** @lends Controls# */ {
         }
     },
 
-    handleGo: {
-        value: function () {
-            var language = this.templateObjects.language;
-            this.selector = new NumberSelector(language.value);
-            // TODO: Trigger event in parent.
+    handleUpdateAction: {
+        value: function (event) {
+            var language = this.templateObjects.language.value.code;
+            this.dispatchEvent(new CustomEvent("update", {
+                detail: {selector: new NumberSelector(language)},
+                bubbles: true,
+                cancelable: true
+            }));
         }
     }
 });
