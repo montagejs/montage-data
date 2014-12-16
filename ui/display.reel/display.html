@@ -12,13 +12,22 @@
             "properties": {
                 "element": {"#": "display"}
             }
+        },
+        "leafletMap": {
+            "prototype": "ui/leaflet-map.reel",
+            "properties": {
+                "element": {"#": "leafletMap"}
+            }
         }
     }
     </script>
 </head>
 <body>
     <div data-montage-id="display" data-montage-skin="light" class="Display">
-        <div class="content"></div>
+        <div class="content">
+            <div data-montage-id="leafletMap"></div>
+            <div class="numbers"></div>
+        </div>
     </div>
 </body>
 </html>

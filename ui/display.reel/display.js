@@ -17,7 +17,7 @@ exports.Display = Component.specialize(/** @lends Display# */ {
 
     display: {
         value: function (stream) {
-            this.content = this.element.querySelector(".content");
+            this.parent = this.element.querySelector(".content .numbers");
             this.loading = true;
             stream.listen(function (data) {
                 this.append(data);
@@ -35,7 +35,7 @@ exports.Display = Component.specialize(/** @lends Display# */ {
             if (loading && !this._loading) {
                 this._loading = document.createElement("div");
                 this._loading.textContent = "loading...";
-                this.content.appendChild(this._loading);
+                this.parent.appendChild(this._loading);
                 this.scroll();
             } else if (!loading && this._loading) {
                 this._loading = null;
@@ -45,7 +45,7 @@ exports.Display = Component.specialize(/** @lends Display# */ {
 
     append: {
         value: function (text) {
-            var child = this.content.lastChild;
+            var child = this.parent.lastChild;
             child.textContent = this.loading ? text : (child.textContent + ", " + text);
         }
     },
@@ -53,8 +53,8 @@ exports.Display = Component.specialize(/** @lends Display# */ {
     scroll: {
         value: function () {
             var maxHeight = this.element.offsetHeight;
-            while (this.content.offsetHeight > maxHeight && this.content.childNodes.length) {
-                this.content.removeChild(this.content.childNodes[0]);
+            while (this.parent.offsetHeight > maxHeight && this.parent.childNodes.length) {
+                this.parent.removeChild(this.parent.childNodes[0]);
             }
         }
     }
