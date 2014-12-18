@@ -17,7 +17,7 @@ exports.LeafletMap = Component.specialize(/** @lends LeafletMap# */ {
 
     enterDocument: {
         value: function () {
-            var element = document.querySelector(".LeafletMap .map");
+            var element = this.element.querySelector(".LeafletMap .map");
             var map = L.map(element).setView([19.553,-172.5],3);
             L.tileLayer('http://{s}.tiles.mapbox.com/v3/gegao0124.kff6be36/{z}/{x}/{y}.png', {
                 attribution: 'test',
