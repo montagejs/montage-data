@@ -8,7 +8,7 @@ body, html, .Main, .Main {
     width: 20%;
 }
 
-.Main .display {
+.Main .map {
     float: left;
     height: 100%;
     width: 80%;

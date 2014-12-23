@@ -1,8 +1,5 @@
-.LeafletMap, 
-.LeafletMap .map {
+.LeafletLayer,
+.LeafletLayer .map {
     height: 100%;
     width: 100%;
 }
-
-
-

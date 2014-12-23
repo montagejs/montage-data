@@ -1,11 +1,11 @@
-.Display .content {
+.Map {
     width: 100%;
     height: 100%;
     position: relative;
 }
 
-.Display .leafletMap, 
-.Display .numbers {
+.Map .leafletLayer,
+.Map .numberLayer {
     position: absolute;
     left: 0;
     top: 0;

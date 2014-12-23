@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>
+        Map
+    </title>
+    <link rel="stylesheet" href="map.css">
+    <script type="text/montage-serialization">
+    {
+        "owner": {
+            "properties": {
+                "element": {"#": "map"}
+            }
+        },
+        "leafletLayer": {
+            "prototype": "ui/leaflet-layer.reel",
+            "properties": {
+                "element": {"#": "leafletLayer"}
+            }
+        },
+        "numberLayer": {
+            "prototype": "ui/number-layer.reel",
+            "properties": {
+                "element": {"#": "numberLayer"}
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <div data-montage-id="map" data-montage-skin="light" class="Map">
+        <div data-montage-id="leafletLayer" class="leafletLayer"></div>
+        <div data-montage-id="numberLayer" class="numberLayer"></div>
+    </div>
+</body>
+</html>

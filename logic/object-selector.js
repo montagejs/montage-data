@@ -12,8 +12,9 @@ var Montage = require("montage").Montage;
  */
 exports.ObjectSelector = Montage.specialize(/** @lends ObjectSelector.prototype */ {
     constructor: {
-        value: function ObjectSelector() {
+        value: function ObjectSelector(type) {
             this.super();
+            this.type = type;
         }
     }
 });

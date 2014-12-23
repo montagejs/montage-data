@@ -14,14 +14,13 @@ exports.Main = Component.specialize(/** @lends Main# */ {
         value: function Main() {
             this.super();
             this.service = new ObjectService();
-            // TODO: Register handleGo().
         }
     },
 
     handleControlsUpdate: {
         value: function (event) {
             var stream = this.service.query(event.detail.selector);
-            this.templateObjects.display.display(stream);
+            this.templateObjects.map.update(stream);
         }
     }
 });
