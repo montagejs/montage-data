@@ -1,5 +1,5 @@
 ============================================================================
-Copyright (c) 2014, Charles d'Harcourt
+Copyright (c) 2015, Montage Studio
 All Rights Reserved. Licensed under the BSD 3-Clause License.
 http://opensource.org/licenses/BSD-3-Clause
 

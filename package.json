@@ -11,9 +11,7 @@
         "montage-testing": "0.4.1"
     },
     "exclude": [
-        "overview.html",
-        "overview",
-        "run-tests.html",
+        "data"
         "test"
     ]
 }
