@@ -1,3 +1,4 @@
-# Please keep in alphabetical order, with /* paths before * ones.
+# Please keep in alphabetical order, with absolute paths before relative ones.
 /node_modules
+out
 .DS_Store
