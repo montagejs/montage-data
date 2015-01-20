@@ -5,8 +5,7 @@
       "tag": "edge"
     },
     "dependencies": {
-        "montage": "0.14.14",
-        "montage-data": "http+ssh://git@github.com:montagestudio/montage-data.git"
+        "montage": "0.14.14"
     },
     "devDependencies": {
         "montage-testing": "0.4.1"
