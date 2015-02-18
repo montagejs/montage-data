@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ._*
 .DS_Store
 .DS_Store?
@@ -6,3 +7,8 @@
 .Trashes
 *.xcodeproj
 node_modules
+=======
+# Please keep in alphabetical order, with /* paths before * ones.
+/node_modules
+.DS_Store
+>>>>>>> eae96c33e0130af04279f25fde6e0f6fc271d787
