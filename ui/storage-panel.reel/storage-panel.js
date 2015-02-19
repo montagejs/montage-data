@@ -84,11 +84,3 @@ exports.StoragePanel = Component.specialize(/** @lends StoragePanel# */ {
     }
 });
 
-
-//this._pressComposer = new PressComposer()
-//this.addComposerForElement(this._pressComposer,element);
-//enterDocument
-
-//this._pressComposer.addEventListener("press",handle, false)
-//prepareforActivationEvents
-
