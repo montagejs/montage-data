@@ -80,7 +80,7 @@
             "bindings": {
                 "iterationObject": {"<-": "@tree:iteration.object"},
                 "element.style.paddingLeft": {"<-": "@tree:iteration.object.depth * 20 + 'px'"},
-                "label": {"<-": "@tree:iteration.object.depth + ' ' + @tree:iteration.object.content.data + ' ' + @tree:iteration.object.content.metadata.type"}
+                "label": {"<-": "@tree:iteration.object.depth + ' ' + @tree:iteration.object.content.metadata.description + ' ' + @tree:iteration.object.content.metadata.type"}
             },
             "listeners": [
                 {
