@@ -62,7 +62,7 @@ exports.StoragePanel = Component.specialize(/** @lends StoragePanel# */ {
             }   
 
             var child = event.target.iterationObject, 
-                children = child.parent.content.subentries,
+                children = child.parent.content.subEntries,
                 index = children.indexOf(child.content);
 
             if (index !== -1) {
