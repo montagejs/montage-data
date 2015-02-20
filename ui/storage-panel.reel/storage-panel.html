@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="storage-panel.css">
+    <script type="text/montage-serialization">
+    {
+        "owner": {
+            "properties": {
+                "element": {"#": "storagePanel"}
+            }
+        },
+        "deleteData": {
+            "prototype": "native/ui/button.reel",
+            "properties":{
+                "label": "X",
+                "element": {"#": "deleteData"}
+            },
+            "bindings": {
+                "iterationObject": {"<-": "@tree:iteration.object"}
+            },
+            "listeners":[
+                {
+                    "type": "action",
+                    "listeners":{"@": "owner"}
+                }
+            ]
+        },
+        "progressBar": {
+            "prototype": "matte/ui/progress.reel",
+            "properties": {
+                "element": {"#": "progressBar"}
+            },
+            "bindings": {
+                "element.style.width": {"<-": "@tree:iteration.object.content.metadata.dataSize * 2 +'px'"},
+                "max": {"<-": "@tree:iteration.object.content.metadata.dataSize"},
+                "value": {"<-": "@tree:iteration.object.content.metadata.dataSize"}
+            }
+        },
+        "refreshData": {
+            "prototype": "native/ui/button.reel",
+            "properties":{
+                "label": "R",
+                "element": {"#": "refreshData"}
+            },
+            "bindings": {
+                "iterationObject": {"<-": "@tree:iteration.object"}
+            },
+            "listeners":[
+                {
+                    "type": "action",
+                    "listeners":{"@": "owner"}
+                }
+            ]
+        },
+        "tree": {
+            "prototype": "montage/ui/repetition.reel",
+            "properties": {
+                "element": {"#": "tree"}
+            },
+            "bindings": {
+                "content": {"<-": "@treeController.iterations"}
+            }
+        },
+        "treeController": {
+            "prototype": "montage/core/tree-controller",
+            "properties": {
+                "initiallyExpanded": true,
+                "childrenPath": "subEntries"
+            },
+            "bindings" :{
+                "content" : {"<-": "@owner.cache.entries"}
+            }
+        },
+        "treenode": {
+            "prototype": "native/ui/button.reel",
+            "properties": {
+                "element": {"#": "treenode"}
+            },
+            "bindings": {
+                "iterationObject": {"<-": "@tree:iteration.object"},
+                "element.style.paddingLeft": {"<-": "@tree:iteration.object.depth * 20 + 'px'"},
+                "label": {"<-": "@tree:iteration.object.depth + ' ' + @tree:iteration.object.content.metadata.description + ' ' + @tree:iteration.object.content.metadata.type"}
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "listener": {"@": "owner"}
+                }
+            ]
+        }
+    }
+    </script>
+</head>
+<body>
+<div data-montage-id="storagePanel" class="StoragePanel">
+    <div data-montage-id="tree">
+        <div data-montage-id="treenode" style = "display:block" class ="TreeNode">
+            <div data-montage-id="progressBar"></div>
+            <button data-montage-id="deleteData" class="DeleteData" />
+            <button data-montage-id="refreshData" class="RefreshData" />
+        </div>
+    </div>
+</div>
+</body>
+</html>
