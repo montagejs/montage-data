@@ -3,8 +3,8 @@
  * @requires core/cache
  */
 var Component = require("montage/ui/component").Component,
-Cache = require("logic/cache").Cache,
-CacheEntry = require("logic/cache-entry").CacheEntry;
+Cache = require("core/cache").Cache,
+CacheEntry = require("core/cache-entry").CacheEntry;
 
 /**
  * @class Main
@@ -41,9 +41,8 @@ exports.Main = Component.specialize(/** @lends Main# */ {
             this.cache.entries.subEntries[1].subEntries[2].metadata = {"type":"txt", "dataSize": 2, "description": "Information"};
         }
     },
+
     cache: {
     	value: null
     }
 });
-
-

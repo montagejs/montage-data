@@ -35,10 +35,10 @@ exports.StoragePanel = Component.specialize(/** @lends StoragePanel# */ {
     */    
     cache:{
     	set:function(value){
-    		this._cache = value;
+    	   this._cache = value;
     	},
     	get:function(){
-    		return this._cache;
+    	   return this._cache;
     	}
     },
 
@@ -74,7 +74,6 @@ exports.StoragePanel = Component.specialize(/** @lends StoragePanel# */ {
     /**
     * Checks to see if item is already in queue, then pushes the current iteration to an the queue to be refreshed. 
     */
-
     handleRefreshDataAction: {
     	value: function(event){
             if (this.refreshQueue.indexOf(event.currentTarget.iterationObject.content) == -1){
