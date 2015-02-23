@@ -5,14 +5,32 @@
       "tag": "edge"
     },
     "dependencies": {
+<<<<<<< HEAD
         "montage": "0.14.14"
     },
     "devDependencies": {
         "montage-testing": "0.4.1"
+        "digit": "~0.5.0",
+        "montage": "~0.14.0",
+        "native": "^0.2.0",
+        "matte": "*"
+=======
+        "montage": "~0.14.14"
+    },
+    "devDependencies": {
+        "digit": "~0.5.0",
+        "matte": "*",
+        "montage-testing": "0.4.1",
+        "native": "^0.2.0"
+>>>>>>> 2b18913846d79ce027921fc1aa49f994ec6c24a1
     },
     "exclude": [
         "data",
         "out",
         "test"
     ]
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 2b18913846d79ce027921fc1aa49f994ec6c24a1
