@@ -3,8 +3,8 @@
  * @requires core/cache
  */
 var Component = require("montage/ui/component").Component,
-Cache = require("core/cache").Cache,
-CacheEntry = require("core/cache-entry").CacheEntry;
+    Cache = require("core/cache").Cache,
+    CacheEntry = require("core/cache-entry").CacheEntry;
 
 /**
  * @class Main
