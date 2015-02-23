@@ -72,10 +72,10 @@
                 "content" : {"<-": "@owner.cache.entries"}
             }
         },
-        "treenode": {
+        "treeNode": {
             "prototype": "native/ui/button.reel",
             "properties": {
-                "element": {"#": "treenode"}
+                "element": {"#": "treeNode"}
             },
             "bindings": {
                 "iterationObject": {"<-": "@tree:iteration.object"},
@@ -95,7 +95,7 @@
 <body>
     <div data-montage-id="storagePanel" class="StoragePanel">
         <div data-montage-id="tree">
-            <div data-montage-id="treenode" style = "display:block" class ="TreeNode">
+            <div data-montage-id="treeNode" style = "display:block" class ="TreeNode">
                 <div data-montage-id="progressBar"></div>
                 <button data-montage-id="deleteData" class="DeleteData" />
                 <button data-montage-id="refreshData" class="RefreshData" />

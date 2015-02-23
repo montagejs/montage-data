@@ -20,6 +20,24 @@ exports.Cache = Montage.specialize(/** @lends Cache# */ {
      */
     entries: {
         value: []
+    },
+
+    /**
+     * TODO: Document.
+     */
+    refresh: {
+        value: function(cacheEntry) {
+            // TODO.
+        }
+    },
+
+    /**
+     * TODO: Document.
+     */
+    delete: {
+        value: function(cacheEntry) {
+            // TODO.
+        }
     }
 });
 

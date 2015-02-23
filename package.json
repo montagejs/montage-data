@@ -1,20 +1,22 @@
 {
-  "name": "s-p",
-  "version": "0.1.0",
-  "dependencies": {
-    "digit": "~0.5.0",
-    "montage": "~0.14.0",
-    "native": "^0.2.0",
-    "matte": "*"
-  },
-  "devDependencies": {
-    "montage-testing": "~0.4.0"
-  },
-  "exclude": [
-    "run-tests.html",
-    "test"
-  ],
-  "bundle": [
-    "ui/main.reel"
-  ]
+    "name": "montage-data",
+    "version": "0.2.0-alpha.1",
+    "publishConfig": {
+      "tag": "edge"
+    },
+    "dependencies": {
+        "montage": "0.14.14"
+    },
+    "devDependencies": {
+        "montage-testing": "0.4.1"
+        "digit": "~0.5.0",
+        "montage": "~0.14.0",
+        "native": "^0.2.0",
+        "matte": "*"
+    },
+    "exclude": [
+        "data",
+        "out",
+        "test"
+    ]
 }

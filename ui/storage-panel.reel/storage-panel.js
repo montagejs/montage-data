@@ -30,40 +30,37 @@ exports.StoragePanel = Component.specialize(/** @lends StoragePanel# */ {
     },
 
     /**
+    * @type Object
     * Cache contains a set of entries, each entry has a set of subentries which contains
     * data and metadata. Getter/setter function to retrieve the data from cache.  
     */    
     cache:{
-    	set:function(value){
-    	   this._cache = value;
-    	},
-    	get:function(){
-    	   return this._cache;
-    	}
+        value: null
     },
 
     /**
+    * @private
     * Alternates the tree iteration object to toggle between expanded and contracted.
     */
-    handleTreenodeAction: {
+    handleTreeNodeAction: {
         value: function (event) {
-            event.target.iterationObject.expanded = !event.target.iterationObject.expanded;
+            event.currentTarget.iterationObject.expanded = !event.currentTarget.iterationObject.expanded;
         }
     },
 
     /**
+    * @private
     * Delete the current tree iterationObject
     */
     handleDeleteDataAction: {
         value: function (event) {
+            var child = event.currentTarget.iterationObject, 
+                children = child.parent.content.subEntries,
+                index = children.indexOf(child.content);
 
             if (this.templateObjects.treeController.content == event._currentTarget.iterationObject.content){
                 this.templateObjects.treeController.content = null;
-            }   
-
-            var child = event.target.iterationObject, 
-                children = child.parent.content.subEntries,
-                index = children.indexOf(child.content);
+            } 
 
             if (index !== -1) {
                 children.splice(index,1);
@@ -72,6 +69,7 @@ exports.StoragePanel = Component.specialize(/** @lends StoragePanel# */ {
     },
 
     /**
+    * @private
     * Checks to see if item is already in queue, then pushes the current iteration to an the queue to be refreshed. 
     */
     handleRefreshDataAction: {
