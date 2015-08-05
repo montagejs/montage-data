@@ -1,0 +1,23 @@
+{
+    "opts": {
+        "destination": "./out/doc",
+        "encoding": "utf8",
+        "recurse": true
+    },
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc"]
+    },
+    "source": {
+        "include": "logic",
+        "includePattern": ".+\\.js(doc)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "plugins": [
+        "plugins/markdown"
+    ],
+    "templates": {
+        "cleverLinks": true,
+        "monospaceLinks": false
+    }
+}
