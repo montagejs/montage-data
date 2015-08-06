@@ -1,8 +1,7 @@
 var Montage = require("montage").Montage;
 
 /**
- * Defines the criteria that objects of a specified type need to satisfy to be
- * included in a data set.
+ * Defines criteria that objects must satisfy to be included in a data set.
  *
  * @class
  * @extends external:Montage

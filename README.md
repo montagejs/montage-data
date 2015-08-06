@@ -3,10 +3,10 @@
 ## Overview
 
 Montage Data is a framework that allows
-[Montage](https://github.com/montagejs/montage) applications to easily interact
-with servers. It maps server functionality to model objects accessible in
+[Montage](https://github.com/montagejs/montage) applications to easily exchange
+data with servers. It maps server data to model objects accessible in
 application code, allowing complex server operations to be performed with simple
-queries or reading or writing of model object properties.
+queries and reading and writing of model object property values.
 
 When the servers accessed are relational database servers this would be called
 Object Relational Mapping (ORM). Since the servers can also offer REST or other
