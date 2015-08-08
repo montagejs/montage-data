@@ -1,20 +1,6 @@
 var DataProvider = require("logic/service/data-provider").DataProvider;
 
 /**
- * A Function called when a [Promise]{@linkcode external:Promise} is fulfilled.
- *
- * @callback OnFulfilled
- * @param {Object} value - The fulfillment value.
- */
-
-/**
- * A Function called when a [Promise]{@linkcode external:Promise} is rejected.
- *
- * @callback OnRejected
- * @param {Object} reason - The reason for the rejection.
- */
-
-/**
  * An object that represents an operation that may not have completed yet but
  * this is expected to complete in the future if it's not already completed, and
  * that yields a value when it's completed.
@@ -119,9 +105,9 @@ exports.DataStream = DataProvider.specialize(/** @lends DataStream# */{
         value: function (objects) {
             var i, n = objects ? objects.length : 0;
             if (n > 0) {
-                this._data.length += n;
+                this.data.length += n;
                 for (i = 0; i < n; ++i) {
-                    this._data[this._data.length - n + i] = objects[i];
+                    this.data[this._data.length - n + i] = objects[i];
                 }
             }
         }

@@ -7,8 +7,8 @@ describe("A DataProvider", function() {
     });
 
     it ("has a an initially empty data array", function () {
-        var provider = new DataProvider();
-        var data = provider.data;
+        var provider = new DataProvider(),
+            data = provider.data;
         expect(Array.isArray(data)).toBe(true);
         expect(data.length).toEqual(0);
     });

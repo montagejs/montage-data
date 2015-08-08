@@ -1,13 +1,6 @@
 var Montage = require("montage").Montage;
 
 /**
- * Customize a Montage type.
- *
- * @external specialize
- * @see {@linkplain http://docs.montagestudio.com/api/Montage.html#specialize}
- */
-
-/**
  * Maps raw data to data objects of a specific type.
  *
  * Currently services have to subclass this and override its
@@ -38,7 +31,7 @@ exports.DataMapping = Montage.specialize(/** @lends DataMapping# */{
      * [specialize()]{@linkcode external:specialize} method of the prototype of
      * the map's type can be used for this, as in the following:
      *
-     *     mapData: {
+     *     mapRawData: {
      *         value: function (rawObject) {
      *             return this.type.prototype.specialize({
      *                 firstName: {
@@ -55,7 +48,7 @@ exports.DataMapping = Montage.specialize(/** @lends DataMapping# */{
      * @argument {Object} rawObject - An object whose properties hold the raw
      *                                data. This object may be modified.
      */
-    mapData: {
+    mapRawData: {
         value: function (rawObject) {
             var object = null;
             if (this.type) {

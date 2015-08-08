@@ -11,8 +11,8 @@ describe("A DataSelector", function() {
     });
 
     it ("preserves its expression object", function () {
-        var selector = new DataSelector();
-        var expression = { a: {"=": 1}, b: {">": 2, "<": 3}, c: {">=": 3}, d: {"!=": 4}};
+        var selector = new DataSelector(),
+            expression = { a: {"=": 1}, b: {">": 2, "<": 3}, c: {">=": 3}, d: {"!=": 4}};
         selector.expression = expression;
         expect(selector.expression).toBe(expression);
     });

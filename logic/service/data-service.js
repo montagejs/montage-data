@@ -2,23 +2,6 @@ var Montage = require("montage").Montage,
     DataStream = require("logic/service/data-stream").DataStream;
 
 /**
- * A Function called when raw data is received by a
- * [service]{@link DataService}.
- *
- * @callback AddRawData
- * @argument {DataService} service - The service responsible for the data. This
- *                                   needs to be specified as an argument
- *                                   because this method may be invoked as a
- *                                   callback without a meaningful `this` value.
- * @argument {DataStream} stream   - The stream to which the data objects
- *                                   corresponding to the raw data should be
- *                                   added.
- * @param {Array} objects          - An array of objects containing the raw
- *                                   data. This array and the objects it
- *                                   contains may be modified.
- */
-
-/**
  * Provides data objects and potentially manages changes to them.
  *
  * @class
@@ -42,6 +25,8 @@ exports.DataService = Montage.specialize(/** @lends DataService# */{
      *
      * Values can be added or removed from the map but the map itself cannot be
      * replaced.
+     *
+     * TO DO: Allow this to be configured through a blueprint file.
      *
      * @type {Map<ObjectDescriptor, DataService>}
      */
@@ -97,9 +82,12 @@ exports.DataService = Montage.specialize(/** @lends DataService# */{
             }
             stream.type = type;
             stream.selector = selector;
-            // Asynchronously get the raw data, map it to data objects, register
-            // those objects, and add them to the stream.
-            this.requestRawData(type, selector, stream, this.addRawData)
+            // Get the data from a child service or from raw data.
+            if (this.childServices.has(type)) {
+                this.childServices.get(type).getData(type, selector, stream);
+            } else {
+                this.getRawData(stream)
+            }
             // Return the passed in or created stream.
             return stream;
         }
@@ -111,21 +99,19 @@ exports.DataService = Montage.specialize(/** @lends DataService# */{
      * Subclasses override this method to provide the raw data on which they
      * depend.
      *
+     * This class' implementation simply calls
+     * [rawDataDone()]{@link DataService#rawDataDone} immediately
+     *
      * @method
-     * @argument {ObjectDescriptor} type - The type of the data requested.
-     * @argument {DataSelector} selector - Criteria that the returned data
-     *                                     must satisfy, expressed in terms of
-     *                                     the data objects the raw data will be
-     *                                     mapped to.
      * @argument {DataStream} stream     - The stream to which the data objects
      *                                     corresponding to the raw data should
-     *                                     be added.
-     * @argument {AddRawData} callback   - The function to be called every time
-     *                                     some of the raw data is received.
+     *                                     be added. This stream contains
+     *                                     references to the type and selector
+     *                                     defining which raw data to get.
      */
     getRawData: {
-        value: function (type, selector, stream, callback) {
-            // To be implemented in subclasses.
+        value: function (stream) {
+            this.rawDataDone(stream)
         }
     },
 
@@ -139,11 +125,6 @@ exports.DataService = Montage.specialize(/** @lends DataService# */{
      * the specified stream.
      *
      * @method
-     * @argument {DataService} service - The service responsible for the data.
-     *                                   This needs to be specified as an
-     *                                   argument because this method may be
-     *                                   invoked as a callback without a
-     *                                   meaningful `this` value.
      * @argument {DataStream} stream   - The stream to which the data objects
      *                                   corresponding to the raw data should be
      *                                   added.
@@ -152,11 +133,11 @@ exports.DataService = Montage.specialize(/** @lends DataService# */{
      *                                   contains may be modified.
      */
     addRawData: {
-        value: function (service, stream, objects) {
+        value: function (stream, objects) {
             // Convert the raw data to appropriate data objects.
             var i, n = objects ? objects.length : 0;
             for (i = 0; i < n; ++i) {
-                objects[i] = service.mapping.mapData(objects[i]);
+                objects[i] = this.mapping.mapRawData(objects[i]);
             }
             // TO DO: Register the data objects into a snapshot map
             // (for uniquing, change tracking, and reverting).
@@ -173,17 +154,12 @@ exports.DataService = Montage.specialize(/** @lends DataService# */{
      * [getRawData()]{@link DataService#getRawData} call they receive.
      *
      * @method
-     * @argument {DataService} service - The service responsible for the data.
-     *                                   This needs to be specified as an
-     *                                   argument because this method may be
-     *                                   invoked as a callback without a
-     *                                   meaningful `this` value.
      * @argument {DataStream} stream -   The stream to which the data objects
      *                                   corresponding to the raw data have been
      *                                   added.
      */
     rawDataDone: {
-        value: function (service, stream) {
+        value: function (stream) {
             stream.dataDone();
         }
     }
