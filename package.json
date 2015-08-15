@@ -15,6 +15,6 @@
         "url": "git@github.com:montagestudio/montage-data.git"
     },
     "dependencies": {
-        "montage": "~0.15.0"
+        "montage": "montagestudio/montage-contour#feature-succession"
     }
 }

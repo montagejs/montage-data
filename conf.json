@@ -1,0 +1,21 @@
+{
+    "opts": {
+        "recurse": true
+    },
+    "source": {
+        "include": ["core", "externals.jsdoc", "package.json", "README.md"],
+        "includePattern": ".+\\.js(doc)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "plugins": [],
+    "tags": {
+        "allowUnknownTags": true
+    },
+    "templates": {
+        "cleverLinks": false,
+        "monospaceLinks": false,
+        "default": {
+            "outputSourceFiles": true
+        }
+    }
+}

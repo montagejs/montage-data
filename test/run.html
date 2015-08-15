@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Montage Data Tests</title>
+
+    <link rel="shortcut icon" type="image/png" href="lib/jasmine/jasmine_favicon.png">
+    <link rel="stylesheet" href="lib/jasmine/jasmine.css">
+
+    <!-- Set up Jasmine. -->
+    <script src="lib/jasmine/jasmine.js"></script>
+    <script src="lib/jasmine/jasmine-html.js"></script>
+    <script src="lib/jasmine/boot.js"></script>
+
+    <!-- Adjust Jasmine to work with Montage Require: The lib/jasmine/boot.js
+      -- loaded above sets up jasmine.getEnv().execute() to be called in
+      -- window.onload. Montage Require, however, load the tests asynchronously,
+      -- so no tests will be defined at window.onload time. This would normally
+      -- cause jasmine.getEnv().execute() to display a "No specs found" banner,
+      -- and this script prevents that by temporarily disabling the
+      -- jasmine.getEnv().execute() function in window.onload. The
+      -- jasmine.getEnv().execute() function can then be invoked without error
+      -- after the tests are defined. This is done in the run.js script loaded
+      -- below by mr/bootstrap.js. -->
+    <script type="text/javascript">
+        var currentWindowOnload = window.onload;
+        window.onload = function() {
+            var currentExecute = jasmine.getEnv().execute;
+            if (currentWindowOnload) {
+                jasmine.getEnv().execute = function () {};
+                currentWindowOnload();
+                jasmine.getEnv().execute = currentExecute;
+            }
+        };
+    </script>
+
+    <!-- Load and run the tests. The Jasmine "specs" defining the tests are
+      -- declared in the run.js script which mr/bootstrap.js invokes. They
+      -- should therefore not be declared in this run.html file.  -->
+    <script src="node_modules/montage/packages/mr/bootstrap.js" data-module="run"></script>
+</head>
+<body>
+</body>
+</html>

@@ -1,11 +1,14 @@
-# Paths within each section are in alphabetical order.
+# Paths are in alphabetical order with absolute ones before relative ones.
 
-# Operating system generated files that shouldn't be committed.
+# Files created by operating systems that shouldn't be packaged.
 ._*
 .DS_Store
 .DS_Store?
 .Spotlight-V100
 .Trashes
+
+# Obsolete source files that shouldn't be packaged.
+/data
 
 # Source code configuration files that shouldn't be packaged.
 .editorconfig
@@ -19,7 +22,7 @@
 .idea
 atlassian-ide-plugin.xml
 
-# Build, test, and utility files that shouldn't be packaged.
+# Files used for building and testing that shouldn't be packaged.
 /builds
 /out
 /spec

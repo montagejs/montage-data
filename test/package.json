@@ -1,0 +1,18 @@
+{
+    "name": "montage-data-tests",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:montagestudio/montage-data-tests.git"
+    },
+    "private": true,
+    "version": "1.0.0-alpha.1",
+    "dependencies": {
+        "montage": "montagestudio/montage-contour#feature-succession"
+    },
+    "mappings": {
+        "montage-data": {
+            "name": "montage-data",
+            "location": "../"
+        }
+    }
+}
