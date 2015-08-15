@@ -1,6 +1,6 @@
-# Paths are in alphabetical order with absolute ones before relative ones.
+# Paths within each section are in alphabetical order.
 
-# Files created by operating systems that shouldn't be committed.
+# Operating system generated files that shouldn't be committed.
 ._*
 .DS_Store
 .DS_Store?
@@ -12,7 +12,7 @@
 .idea
 atlassian-ide-plugin.xml
 
-# Files generated when building and testing that shouldn't be committed.
+# Build and test generated files that shouldn't be committed.
 /builds
 /out
 TEST-*.xml
