@@ -2,7 +2,7 @@ var ObjectDescriptor = require("montage-data/logic/model/object-descriptor").Obj
 
 describe("An ObjectDescriptor", function() {
 
-    it ("can be created", function () {
+    it("can be created", function () {
         expect(new ObjectDescriptor()).toBeDefined();
     });
 

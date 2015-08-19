@@ -12,7 +12,7 @@
     "author": "Montage Studio, inc. (http://montagestudio.com/)",
     "repository": {
         "type": "git",
-        "url": "git@github.com:montagestudio/montage-data.git"
+        "url": "montagestudio/montage-data"
     },
     "dependencies": {
         "montage": "~0.15.0"

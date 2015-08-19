@@ -27,20 +27,33 @@ var DataProvider = require("logic/service/data-provider").DataProvider;
  * both. Additionally, only one object can ever add data to a particular
  * stream. Typically that object will be a [Service]{@link DataService}.
  *
+ * Streams are also [promises]{@linkcode external:Promise} that become fulfilled
+ * when all the data they expect to get is first received. These promises will
+ * not be fulfilled again if that data subsequently changes for any reason.
+ *
  * @class
  * @extends DataProvider
  *
  */
 exports.DataStream = DataProvider.specialize(/** @lends DataStream# */{
 
+    _isDataDone: {
+        value: false // Set in dataDone().
+    },
+
+    _resolve: {
+        value: undefined // Set in _promise getter, used in dataDone().
+    },
+
     _promise: {
-        get: function() {
+        get: function () {
             var self = this;
             if (!this.__promise) {
-                this.__promise = new Promise(function(resolve, reject) {
-                    self._resolve = resolve;
-                    self._reject = reject;
-                });
+                if (this._isDataDone) {
+                    this.__promise = Promise.resolve(this.data);
+                } else {
+                    this.__promise = new Promise(function(resolve) { self._resolve = resolve; });
+                }
             }
             return this.__promise;
         }
@@ -90,6 +103,8 @@ exports.DataStream = DataProvider.specialize(/** @lends DataStream# */{
      */
     requestData: {
         value: function (start, length) {
+            // Don't do anything, data will come in the order it is added to the
+            // stream and no request can change that.
         }
     },
 
@@ -121,10 +136,11 @@ exports.DataStream = DataProvider.specialize(/** @lends DataStream# */{
      */
     dataDone: {
         value: function () {
-            // Create the promise if necessary.
-            this._promise;
-            // Resolve the newly or previously created promise.
-            this._resolve(this.data);
+            this._isDataDone = true;
+            if (this._resolve) {
+                this._resolve(this.data);
+                this._resolve = null;
+            }
         }
     },
 
@@ -134,14 +150,20 @@ exports.DataStream = DataProvider.specialize(/** @lends DataStream# */{
      * stream has been received.
      *
      * @method
-     * @argument {OnFulfilled} onFulfilled - Called when the DataStream has
-     *                                       received all the data it is
-     *                                       expected to receive. From the
-     *                                       moment this callback is first
-     *                                       called neither the DataStream's
+     * @argument {OnFulfilled} onFulfilled - Called when the stream has received
+     *                                       all the data it is expected to
+     *                                       receive. Because changes in
+     *                                       selectors, filters, sorting, or on
+     *                                       in service data may occur after
+     *                                       that, this stream'
      *                                       [data]{@link DataStream#data} array
-     *                                       nor the contents of that array will
-     *                                       ever change again.
+     *                                       may actually change after this
+     *                                       method is called, but if that
+     *                                       happens this method will not be
+     *                                       called again. This method therefore
+     *                                       only provides an indication of when
+     *                                       the first set of data received by
+     *                                       this stream was received.
      * @argument {OnRejected} onRejected -   DataStreams are never rejected so
      *                                       rejection callbacks passed in to
      *                                       this method are never called.

@@ -44,17 +44,16 @@ exports.DataMapping = Montage.specialize(/** @lends DataMapping# */{
      *         }
      *     }
      *
+     * The default implementation of this method returns the raw object
+     * unmodified.
+     *
      * @method
      * @argument {Object} rawObject - An object whose properties hold the raw
      *                                data. This object may be modified.
      */
     mapRawData: {
         value: function (rawObject) {
-            var object = null;
-            if (this.type) {
-                object = this.type.prototype.specialize({});
-            }
-            return object;
+            return rawObject;
         }
     }
 
