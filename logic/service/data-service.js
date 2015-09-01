@@ -1,4 +1,5 @@
 var Montage = require("montage").Montage,
+    DataMapping = require("logic/service/data-mapping").DataMapping,
     DataStream = require("logic/service/data-stream").DataStream;
 
 /**
@@ -10,7 +11,7 @@ var Montage = require("montage").Montage,
 exports.DataService = Montage.specialize(/** @lends DataService# */{
 
     /**
-     * The parent of this service when it is a child of another service, or
+     * The parent of this service if it is a child of another service, or
      * `null` if it not a child service.
      *
      * @type {DataService}
@@ -26,7 +27,7 @@ exports.DataService = Montage.specialize(/** @lends DataService# */{
      * Values can be added or removed from the map but the map itself cannot be
      * replaced.
      *
-     * TO DO: Allow this to be configured through a blueprint file.
+     * @todo [Charles]: Allow this to be configured through a blueprint file.
      *
      * @type {Map<ObjectDescriptor, DataService>}
      */
@@ -43,12 +44,21 @@ exports.DataService = Montage.specialize(/** @lends DataService# */{
      * Maps the raw data on which this service is based to the data objects
      * returned by this service.
      *
-     * Must be defined before the service can be used.
+     * If no mapping is defined a default mapping is provided that does not
+     * convert the raw data.
      *
      * @type {Object}
      */
     mapping: {
-        value: null
+        get: function () {
+            if (!this._mapping) {
+                this._mapping = new DataMapping();
+            }
+            return this._mapping;
+        },
+        set: function(mapping) {
+            this._mapping = mapping;
+        }
     },
 
     /**
